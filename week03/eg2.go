@@ -81,9 +81,9 @@ func main() {
 			return doConn(ctx, &con)
 		})
 		// doPing模拟 处理http请求
-		eg2.Go(func() error {
-			return doPing(&con)
-		})
+		//eg2.Go(func() error {
+		//	return doPing(&con)
+		//})
 		// 处理请求结果
 		if err = eg2.Wait(); err != nil {
 			fmt.Printf("recv err:%s\n", err)
