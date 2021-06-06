@@ -8,12 +8,12 @@ import (
 
 // for list data
 func Bcategory(c *gin.Context) {
+	bcat := &model.Bcategory{}
 	c.JSON(http.StatusOK, gin.H{
-		"data": model.Bcategory{}.List(),
+		"data": bcat.List(),
 	})
 	return
 }
-
 
 // for single data
 func BScategory(c *gin.Context) {
