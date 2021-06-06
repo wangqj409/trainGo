@@ -1,5 +1,5 @@
 module github.com/wangqj409/trainGo/week04/blog
-
+		vscode-settings:settingseditor
 go 1.16
 
 require (
