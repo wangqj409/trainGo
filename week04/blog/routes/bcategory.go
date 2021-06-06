@@ -18,11 +18,15 @@ func Bcategory(c *gin.Context) {
 // for single data
 func BScategory(c *gin.Context) {
 	var bc model.Bcategory
-	if err := c.ShouldBindJSON(&bc); err != nil {
+	if c.Param("id") == "" {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"msg": "missing params",
+			"msg": "required id",
 		})
+		return
 	}
+	c.JSON(http.StatusOK, gin.H{
+		"data": bc,
+	})
 	return
 }
 
