@@ -2,13 +2,15 @@ package model
 
 import (
 	"gorm.io/gorm"
-	_ "gorm.io/gorm/mysql"
+	"gorm.io/driver/mysql"
 )
 
 var (
-	db *gorm.DB
+	blogdb *gorm.DB
 )
 
 func init() {
-	db = gorm.Open("mysql", &gorm.Config{})
+	dsn := "root:@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local"
+	blogdb, _ = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	blogdb.AutoMigrate(&Bcategory{})
 }

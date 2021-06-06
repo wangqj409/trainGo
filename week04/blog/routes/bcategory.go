@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/wangqj409/trainGo/week04/blog/internal/model"
 	"net/http"
+	"strconv"
 )
 
 // for list data
@@ -24,6 +25,7 @@ func BScategory(c *gin.Context) {
 		})
 		return
 	}
+
 	c.JSON(http.StatusOK, gin.H{
 		"data": bc,
 	})
@@ -32,15 +34,18 @@ func BScategory(c *gin.Context) {
 
 // for dealing post data
 func BPcategory(c *gin.Context) {
-	var cat model.Bcategory
-	if err := c.ShouldBindJSON(&cat); err != nil {
-		c.JSON(http.StatusBadRequest, err.Error())
-		return
-	}
+	cat := &model.Bcategory{}
+	cat.CatName = c.PostForm("cat_name")
+	pid, _ := strconv.Atoi(c.PostForm("pid"))
+	cat.Pid = uint32(pid)
 	if cat.CatName == "" {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"msg": "cat_name should not be empty",
 		})
 		return
 	}
+	cat.Create()
+	c.JSON(http.StatusOK, gin.H{
+		"data": cat,
+	})
 }
