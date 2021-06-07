@@ -1,37 +1,29 @@
 package model
 
 import (
-	"time"
+	"fmt"
+	"github.com/wangqj409/trainGo/week04/blog/internal/dao"
 )
 
 type Bcategory struct {
-	Id       uint32    `json:"id" uri:"id"`
-	Pid      uint32    `json:"pid" uri:"pid"`
-	CatName  string    `json:"cat_name" uri:"cat_name"`
-	CreateAt time.Time `json:"create_at"`
-	DeleteAt time.Time `json:"delete_at"`
+	dao.Bcategory
 }
 
-func (c *Bcategory) List() []Bcategory {
-	var results []Bcategory
-	blogdb.Find(&results)
-	return results
+func (c *Bcategory) String() {
+	fmt.Printf("%d %d %s\n", c.ID, c.Pid, c.CatName)
 }
 
-func (c *Bcategory) One(id uint32) Bcategory {
-	var result Bcategory
+func (c *Bcategory) List() []dao.Bcategory {
+	return c.Bcategory.List()
+}
 
-	blogdb.Find(&result, Bcategory{
-		Id: id,
-	})
-	return result
+func (c *Bcategory) FindOne(id interface{}) (result *dao.Bcategory) {
+	result = &dao.Bcategory{}
+	result.FindOne(id)
+	return
 }
 
 func (c *Bcategory) Create() *Bcategory {
-	c.CreateAt = time.Now()
-	blogdb.Select("pid,cat_name,create_at").Create(c)
-	if blogdb.RowsAffected > 0 {
-		return c
-	}
-	return &Bcategory{}
+	c.Bcategory.Create()
+	return c
 }

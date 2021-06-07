@@ -13,23 +13,21 @@ func Bcategory(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"data": bcat.List(),
 	})
-	return
 }
 
 // for single data
 func BScategory(c *gin.Context) {
-	var bc model.Bcategory
+	bc := model.Bcategory{}
 	if c.Param("id") == "" {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"msg": "required id",
 		})
 		return
 	}
-
+	id := c.Param("id")
 	c.JSON(http.StatusOK, gin.H{
-		"data": bc,
+		"data": bc.FindOne(id),
 	})
-	return
 }
 
 // for dealing post data
