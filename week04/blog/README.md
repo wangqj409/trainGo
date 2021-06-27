@@ -1,6 +1,5 @@
-
-#### Category
-##### 1.category list
+## Category
+### 1.category list
 url: localhost:8080/v1/category
 
 method: GET
@@ -22,7 +21,7 @@ return
 }
 ```
 
-##### 2.create category 
+### 2.create category 
 url: localhost:8080/v1/category
 
 method: POST
@@ -32,7 +31,7 @@ method: POST
 |pid|int||default:0|
 |cat_name|string|||
 
-##### 3.category detail
+### 3.category detail
 url: localhost:8080/v1/category/{cat_id}
 
 method: GET
@@ -52,8 +51,8 @@ return demo
 }
 ```
 
-#### Article
-##### 4.list article
+## Article
+### 4.list article
 url: localhost:8080/v1/article
 
 method: GET
@@ -80,7 +79,7 @@ return demo
 }
 ```
 
-##### 5.create article
+### 5.create article
 url: localhost:8080/v1/article
 
 method: POST
@@ -98,7 +97,6 @@ return
         "id": 0,
         "cat_id": 2,
         "title": "昨天是高考第一天",
-        "sub_title": "昨天是�",
         "content": "昨天是高考第二天了，内心的尴尬无以言语"
     }
 }
