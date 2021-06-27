@@ -28,7 +28,7 @@ func httpstart() error {
 }
 
 func reg() error {
-	sigs := []os.Signal{syscall.SIGINT, syscall.SIGCHLD, syscall.SIGABRT}
+	sigs := []os.Signal{syscall.SIGINT, syscall.SIGCHLD, syscall.SIGABRT, syscall.SIGHUP}
 
 	sigchan := make(chan os.Signal, 1)
 	signal.Notify(sigchan, sigs...)
