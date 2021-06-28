@@ -26,7 +26,7 @@ url: localhost:8080/v1/category
 
 method: POST
 
-|name|type|value|mark|
+|name|type|value|remark|
 |---|---|---|---|
 |pid|int||default:0|
 |cat_name|string|||
@@ -84,7 +84,7 @@ url: localhost:8080/v1/article
 
 method: POST
 
-|name|type|value|mark|
+|name|type|value|remark|
 |---|---|---|---|
 |cat_id|int||default:0|
 |title|string||title content|
@@ -97,7 +97,7 @@ return
         "id": 0,
         "cat_id": 2,
         "title": "昨天是高考第一天",
-        "content": "昨天是高考第二天了，内心的尴尬无以言语"
+        "content": "昨天是高考第二天了，内心的激动无以言语"
     }
 }
 ```
