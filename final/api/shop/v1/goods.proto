@@ -51,15 +51,15 @@ message CreateGoodsRequest {
 }
 
 message CreateGoodsReply {
-    GoodsInfo g = 1;
+    GoodsInfo goods = 1;
 }
 
 message UpdateGoodsRequest {
-    GoodsInfo g = 1;
+    GoodsInfo goods = 1;
 }
 
 message UpdateGoodsReply {
-    GoodsInfo g = 1;
+    GoodsInfo goods = 1;
 }
 
 message DeleteGoodsRequest {
@@ -73,11 +73,11 @@ message GetGoodsRequest {
     uint64 goods_id = 1;
 }
 message GetGoodsReply {
-    GoodsInfo g = 1;
+    GoodsInfo goods = 1;
 }
 
 message ListGoodsRequest {
 }
 message ListGoodsReply {
-    repeated GoodsInfo list = 1;
+    repeated GoodsInfo goods_list = 1;
 }

@@ -5,4 +5,4 @@ import (
 )
 
 // ProviderSet is server providers.
-var SupplyPS = wire.NewSet(NewSupplyHTTPServer, NewSupplyGRPCServer)
+var GoodsPS = wire.NewSet(NewGoodsHTTPServer, NewGoodsGRPCServer)

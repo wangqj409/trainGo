@@ -1,9 +1,9 @@
 package service
 
 import (
-    "context"
+	"context"
 
-    pb "shopp/api/shop/v1"
+	pb "shopp/api/shop/v1"
 )
 
 type GoodsService struct {
