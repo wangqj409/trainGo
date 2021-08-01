@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package api.shop.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "shopp/api/shop/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.shop.v1";
+
+service Cat {
+    rpc CreateCat (CreateCatRequest) returns (CreateCatReply){
+        option (google.api.http) = {
+            post: "/cat"
+        };
+    };
+    rpc UpdateCat (UpdateCatRequest) returns (UpdateCatReply){
+        option (google.api.http) = {
+            post: "/cat"
+        };
+    };
+    rpc DeleteCat (DeleteCatRequest) returns (DeleteCatReply){
+        option (google.api.http) = {
+            post: "/cat/{cat_id}"
+        };
+    };
+    rpc GetCat (GetCatRequest) returns (GetCatReply){
+        option (google.api.http) = {
+            get: "/cat/{cat_id}"
+        };
+    };
+    rpc ListCat (ListCatRequest) returns (ListCatReply){
+        option (google.api.http) = {
+            get: "/cats"
+        };
+    };
+}
+
+message CatInfo{
+    uint64 cat_id = 1;
+    string cat_name = 2;
+    uint64 pid = 3;
+}
+message CreateCatRequest {
+    string cat_name = 1;
+    uint64 pid = 2;
+}
+message CreateCatReply {
+    CatInfo cat = 1;
+}
+
+message UpdateCatRequest {
+    CatInfo cat = 1;
+}
+message UpdateCatReply {
+    CatInfo cat = 1;
+}
+
+message DeleteCatRequest {
+    uint64 cat_id = 1;
+}
+message DeleteCatReply {
+    int32 status = 1;
+}
+
+message GetCatRequest {
+    uint64 cat_id = 1;
+}
+message GetCatReply {
+    CatInfo cat = 1;
+}
+
+message ListCatRequest {
+}
+message ListCatReply {
+    repeated CatInfo list = 1;
+}

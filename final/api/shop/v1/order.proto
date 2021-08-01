@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package api.shop.v1;
+
+import "api/shop/v1/goods.proto";
+import "google/api/annotations.proto";
+
+option go_package = "shopp/api/shop/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.shop.v1";
+
+service Order {
+    rpc CreateOrder (CreateOrderRequest) returns (CreateOrderReply) {
+        option (google.api.http) = {
+            post: "/order"
+        };
+    };
+    rpc UpdateOrder (UpdateOrderRequest) returns (UpdateOrderReply){
+        option (google.api.http) = {
+            post: "/order"
+        };
+    };
+    rpc DeleteOrder (DeleteOrderRequest) returns (DeleteOrderReply){
+        option (google.api.http) = {
+            post: "/order"
+        };
+    };
+    rpc GetOrder (GetOrderRequest) returns (GetOrderReply){
+        option (google.api.http) = {
+            get: "/order/{order_id}"
+        };
+    };
+    rpc ListOrder (ListOrderRequest) returns (ListOrderReply){
+        option (google.api.http) = {
+            get: "/orders"
+        };
+    };
+}
+
+message OrderInfo {
+    uint64 order_id = 1;
+    GoodsInfo goods = 2;
+}
+
+
+message CreateOrderRequest {
+    GoodsInfo goods = 1;
+}
+message CreateOrderReply {
+    OrderInfo order = 1;
+}
+
+message UpdateOrderRequest {}
+message UpdateOrderReply {}
+
+message DeleteOrderRequest {}
+message DeleteOrderReply {}
+
+message GetOrderRequest {}
+message GetOrderReply {
+    OrderInfo order = 1;
+}
+
+message ListOrderRequest {}
+message ListOrderReply {
+    repeated OrderInfo orders = 1;
+}

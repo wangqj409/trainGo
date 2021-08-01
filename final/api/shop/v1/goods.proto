@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package api.shop.v1;
+import "google/api/annotations.proto";
+
+option go_package = "shopp/api/shop/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.shop.v1";
+
+service Goods {
+    rpc CreateGoods (CreateGoodsRequest) returns (CreateGoodsReply){
+        option (google.api.http) = {
+            post: "/goods"
+        };
+    };
+    rpc UpdateGoods (UpdateGoodsRequest) returns (UpdateGoodsReply){
+        option (google.api.http) = {
+            post: "/goods"
+        };
+    };
+    rpc DeleteGoods (DeleteGoodsRequest) returns (DeleteGoodsReply){
+        option (google.api.http) = {
+            post: "/goods/{goods_id}"
+        };
+    };
+    rpc GetGoods (GetGoodsRequest) returns (GetGoodsReply){
+        option (google.api.http) = {
+            get: "/goods/{goods_id}"
+        };
+    };
+    rpc ListGoods (ListGoodsRequest) returns (ListGoodsReply){
+        option (google.api.http) = {
+            get: "/goods"
+        };
+    };
+}
+
+message GoodsInfo {
+    uint64 goods_id = 1;
+    string goods_name = 2;
+    uint32 cat_id = 3;
+    uint64 goods_price = 4;
+    uint64 goods_num = 5;
+}
+
+message CreateGoodsRequest {
+    string goods_name = 1;
+    uint32 cat_id = 2;
+    uint64 goods_price = 3;
+    uint64 goods_num = 4;
+}
+
+message CreateGoodsReply {
+    GoodsInfo g = 1;
+}
+
+message UpdateGoodsRequest {
+    GoodsInfo g = 1;
+}
+
+message UpdateGoodsReply {
+    GoodsInfo g = 1;
+}
+
+message DeleteGoodsRequest {
+    uint64 goods_id = 1;
+}
+message DeleteGoodsReply {
+    string status = 1;
+}
+
+message GetGoodsRequest {
+    uint64 goods_id = 1;
+}
+message GetGoodsReply {
+    GoodsInfo g = 1;
+}
+
+message ListGoodsRequest {
+}
+message ListGoodsReply {
+    repeated GoodsInfo list = 1;
+}

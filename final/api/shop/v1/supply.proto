@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package api.shop.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "shopp/api/shop/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.shop.v1";
+
+service Supply {
+    rpc CreateSupply (CreateSupplyRequest) returns (CreateSupplyReply) {
+        option (google.api.http) = {
+            post: "/supply"
+        };
+    };
+    rpc UpdateSupply (UpdateSupplyRequest) returns (UpdateSupplyReply) {
+        option (google.api.http) = {
+            post: "/supply"
+        };
+    };;
+    rpc DeleteSupply (DeleteSupplyRequest) returns (DeleteSupplyReply) {
+        option (google.api.http) = {
+            post: "/supply"
+        };
+    };;
+    rpc GetSupply (GetSupplyRequest) returns (GetSupplyReply) {
+        option (google.api.http) = {
+            get: "/supply/{supply_id}"
+        };
+    };;
+    rpc ListSupply (ListSupplyRequest) returns (ListSupplyReply) {
+        option (google.api.http) = {
+            get: "/supply"
+        };
+    };;
+}
+
+message SupplyInfo {
+    uint64 supply_id = 1;
+    string supply_name = 2;
+}
+
+message CreateSupplyRequest {
+    string supply_name = 1;
+}
+message CreateSupplyReply {
+    SupplyInfo supply_info = 1;
+}
+
+message UpdateSupplyRequest {
+    SupplyInfo supply_info = 1;
+}
+message UpdateSupplyReply {
+    SupplyInfo supply_info = 1;
+}
+
+message DeleteSupplyRequest {
+    SupplyInfo supply_info = 1;
+}
+message DeleteSupplyReply {
+    int32 status = 1;
+}
+
+message GetSupplyRequest {
+    uint64 supply_id = 1;
+}
+message GetSupplyReply {
+    SupplyInfo supply_info = 1;
+}
+
+message ListSupplyRequest {
+    
+}
+message ListSupplyReply {
+    repeated SupplyInfo supplies = 1;
+}
