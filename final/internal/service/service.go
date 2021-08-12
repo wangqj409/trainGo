@@ -9,4 +9,5 @@ var ProviderSet = wire.NewSet(
 	NewSupplyService,
 	NewOrderService,
 	NewCatService,
+	NewMqProducerService,
 )

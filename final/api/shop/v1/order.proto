@@ -56,7 +56,9 @@ message UpdateOrderReply {}
 message DeleteOrderRequest {}
 message DeleteOrderReply {}
 
-message GetOrderRequest {}
+message GetOrderRequest {
+    uint64 order_id = 1;
+}
 message GetOrderReply {
     OrderInfo order = 1;
 }

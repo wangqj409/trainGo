@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package api.shop.v1;
+
+option go_package = "shopp/api/shop/v1;v1";
+option java_multiple_files = true;
+option java_package = "api.shop.v1";
+
+service MqProducer {
+    rpc CreateMqproducer (CreateMqproducerRequest) returns (CreateMqproducerReply);
+    rpc UpdateMqproducer (UpdateMqproducerRequest) returns (UpdateMqproducerReply);
+    rpc DeleteMqproducer (DeleteMqproducerRequest) returns (DeleteMqproducerReply);
+    rpc GetMqproducer (GetMqproducerRequest) returns (GetMqproducerReply);
+    rpc ListMqproducer (ListMqproducerRequest) returns (ListMqproducerReply);
+}
+
+message products {
+    int64 product_id = 1;
+    string product_name = 2;
+}
+
+message CreateMqproducerRequest {
+    products products = 1;
+}
+
+message CreateMqproducerReply {
+    int32 status = 1;
+    int64 mq_id = 2;
+}
+
+message UpdateMqproducerRequest {}
+message UpdateMqproducerReply {}
+
+message DeleteMqproducerRequest {}
+message DeleteMqproducerReply {}
+
+message GetMqproducerRequest {}
+message GetMqproducerReply {}
+
+message ListMqproducerRequest {}
+message ListMqproducerReply {}
